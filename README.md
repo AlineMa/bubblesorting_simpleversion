@@ -1,0 +1,120 @@
+# bubblesorting_simpleversion
+drawing lines by sorting networks
+
+import fontastic.*;
+
+
+int[]  values;
+values= [1,4,3,5,2];
+int n = values.size();
+
+
+void bubbleSort(){
+  bool swapped = false;
+  int round = 0;
+  while(!swapped){
+    // 1 round of sorting
+    swapped = false
+    for(int i = 1; i <= n-1; i++){
+      // sort by value
+      // should i swap them???
+      if(values[i-1] > values[i]){
+        // draw / and \
+        drawSignForRound(text("01", i, round);
+        swap(i-1, i);
+        swapped = true;
+      }
+      else{
+        // draw |
+        drawSignForRound(text("3"), i, round);
+      }
+    }
+    round = round + 1;
+  }
+}
+
+
+void swap(int i, int j){
+  int oldI = values[i];
+  int oldJ = values[j];
+  values[i] = oldJ;
+  values[j] = oldI;
+}
+
+void drawSignForRound(string textFont , int posX, int posY){
+  // character is what you want to draw 
+  // posX is where on the X axis
+  // posY is where on the Y axis => the current round
+  
+ // create a new Fontastic font called "10PRINT"
+ Fontastic f = new Fontastic(this, "10PRINT");
+
+// set the default width / kerining for a glyph
+f.setAdvanceWidth(1024);
+
+// create an array that holds six values of type PVector
+
+ //  slash /
+PVector[] points= new PVector[6];
+points[0] = new PVector(0, 0);
+points[1] = new PVector(0, 200);
+points[2] = new PVector(800, 1000);
+points[3] = new PVector(1000, 1000);
+points[4] = new PVector(1000, 800);
+points[5] = new PVector(200, 0);
+
+// slash \
+PVector[] points1 = new PVector[6];
+points1[0] = new PVector(1000, 0);
+points1[1] = new PVector(800, 0);
+points1[2] = new PVector(0, 800);
+points1[3] = new PVector(0, 1000);
+points1[4] = new PVector(200, 1000);
+points1[5] = new PVector(1000, 200);
+
+ // slash - 
+PVector[] points2 = new PVector[6];
+points2[0] = new PVector(0, 500);
+points2[1] = new PVector(200, 640);
+points2[2] = new PVector(800, 640);
+points2[3] = new PVector(1000, 500);
+points2[4] = new PVector(800, 360);
+points2[5] = new PVector(200, 360);
+
+ //slash |
+PVector[] points3 = new PVector[6];
+points3[0] = new PVector(500, 0);
+points3[1] = new PVector(360, 200);
+points3[2] = new PVector(360, 800);
+points3[3] = new PVector(500, 1000);
+points3[4] = new PVector(640, 800);
+points3[5] = new PVector(640, 200);
+
+//space
+PVector[] points4 = new PVector[0];
+
+
+f.addGlyph('0').addContour(points);  
+f.addGlyph('1').addContour(points1);
+f.addGlyph('2').addContour(points2);
+f.addGlyph('3').addContour(points3);
+f.addGlyph(' ').addContour(points4);
+
+f.buildFont();
+PFont myFont = createFont(f.getTTFfilename(), 64);
+
+size(800, 600);
+background(0);
+fill(255);
+textFont(myFont);
+
+
+  
+}
+
+/*
+ * swap example
+ * values = [red,green,blue,white];
+ * swap(1,2);
+ * value is now [green,red,blue,white];
+ */
