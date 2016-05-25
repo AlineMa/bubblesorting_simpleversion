@@ -1,10 +1,13 @@
 import fontastic.*;
 
+//you told me I sould do a loop , so I've concluded that here I should "void setup" 
 
+void setup() {
 int[]  values;
 values= [1,4,3,5,2];
 int n = values.size();
 
+}
 
 void bubbleSort(){
   bool swapped = false;
